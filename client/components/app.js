@@ -7,23 +7,24 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>
-      <HorseTable/>
-      <EditHorse/>
-    </div>);
+      <div>
+        <HorseTable/>
+        <EditHorse/>
+      </div>
+    );
   }
 }
 
 App.propTypes = {
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (_state) => {
   return {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
+const mapDispatchToProps = (_dispatch) => {
+  return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

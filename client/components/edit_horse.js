@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HorseLevel from './horse_level';
+import PropTypes from 'prop-types';
 import { selectedHorse } from '../selectors';
 
 
@@ -13,25 +13,26 @@ class EditHorse extends React.Component {
 
     return (
       <div>
-      <h3>Edit Horse</h3>
+        <h3>Edit Horse</h3>
         <span>Horse Id: { horse.id }</span>
         <span>Horse Name: <input type="text" value={horse.name} onChange={(this.onHorseNameChange)} /></span>
-      </div>);
+      </div>
+    );
   }
 }
 
 EditHorse.propTypes = {
-  horse: React.PropTypes.object
+  horse: PropTypes.object
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     horse: selectedHorse(state)
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
+const mapDispatchToProps = (_dispatch) => {
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditHorse);

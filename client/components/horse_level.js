@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const HORSE_LEVELS = [...Array(30).keys()].map(i => ++i );
 class HorseLevel extends React.Component {
@@ -10,7 +10,7 @@ class HorseLevel extends React.Component {
         <li key={level}>
           {level} { horse.level === level ? 'current' : ''}
         </li>
-      )
+      );
     });
 
     return (
@@ -22,7 +22,7 @@ class HorseLevel extends React.Component {
 }
 
 HorseLevel.propTypes = {
-  horse: React.PropTypes.object.isRequired
+  horse: PropTypes.object.isRequired
 };
 
 

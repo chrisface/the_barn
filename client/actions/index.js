@@ -24,5 +24,5 @@ export const selectHorse = (horseId) => {
   return {
     type: SELECT_HORSE,
     horseId: horseId
-  }
+  };
 };

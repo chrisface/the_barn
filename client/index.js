@@ -1,14 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-import { Provider } from 'react-redux'
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
 import store from './store';
-import horses from './reducers'
 import { GENDER_MALE, GENDER_FEMALE } from './constants/horse';
 import App from './components/app';
-import styles from './main.scss'
-
-
-
+import './main.scss';
 
 import { addHorse } from './actions';
 
@@ -23,7 +19,7 @@ const render = () => {
 
 store.subscribe(() =>{
   render();
-})
+});
 
 render();
 

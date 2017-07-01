@@ -1,23 +1,24 @@
 import React from 'react';
-import { Switch, Row, Column } from 'react-foundation';
+import PropTypes from 'prop-types';
 
 class HorseRowComponent extends React.Component {
   render() {
     const { horse, onSelection} = this.props;
     return (
-      <tr onClick={()=>{onSelection(horse.id)}} >
+      <tr onClick={()=>{ onSelection(horse.id); }} >
         <td>{ horse.id }</td>
         <td>{ horse.name }</td>
         <td>{ horse.tier }</td>
         <td>{ horse.level }</td>
         <td>{ horse.gender }</td>
-     </tr>
-   );
+      </tr>
+    );
   }
 }
 
 HorseRowComponent.propTypes = {
-  onSelection: React.PropTypes.func.isRequired
+  onSelection: PropTypes.func.isRequired,
+  horse: PropTypes.object.isRequired
 };
 
 class HorseHeaderRowComponent extends React.Component {
@@ -30,7 +31,7 @@ class HorseHeaderRowComponent extends React.Component {
         <td>Level</td>
         <td>Gender</td>
       </tr>
-   );
+    );
   }
 }
 
