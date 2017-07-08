@@ -38,9 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onHorseSelected: (horseId) => {
-      dispatch(selectHorse(horseId));
-    }
+    onHorseSelected: horseId => dispatch(selectHorse(horseId))
   };
 };
 

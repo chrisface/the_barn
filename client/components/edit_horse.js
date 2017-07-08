@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectedHorse } from '../selectors';
 import { updateHorse } from '../actions';
+import { GENDER_MALE, GENDER_FEMALE} from '../constants/horse';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Row, Column, Colors } from 'react-foundation';
 
@@ -34,6 +35,22 @@ class EditHorse extends React.Component {
             <label>
               Tier
               <Field name="tier" component="input" type="text" />
+            </label>
+          </Column>
+          <Column large={2}>
+            <label>
+              Level
+              <Field name="level" component="input" type="text" />
+            </label>
+          </Column>
+          <Column large={6}>
+            <label>
+              Gender
+              <Field name="gender" component="select">
+                <option />
+                <option value={GENDER_MALE}>{GENDER_MALE}</option>
+                <option value={GENDER_FEMALE}>{GENDER_FEMALE}</option>
+              </Field>
             </label>
           </Column>
         </Row>
