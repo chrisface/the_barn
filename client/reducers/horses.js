@@ -1,4 +1,4 @@
-import { ADD_HORSE, SELECT_HORSE } from '../actions';
+import { ADD_HORSE, UPDATE_HORSE, SELECT_HORSE } from '../actions';
 
 const defaultState = {
   selectedHorse: null,
@@ -19,6 +19,11 @@ export default (state = defaultState, action) => {
           level: action.level
         }
       ]
+    });
+  }
+  case UPDATE_HORSE: {
+    return Object.assign({}, state, {
+      horsesList: state.horsesList.map(horse => action.horse.id === horse.id ? action.horse : horse )
     });
   }
   case SELECT_HORSE: {

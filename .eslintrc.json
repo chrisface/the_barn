@@ -38,6 +38,10 @@
     ],
     "react/jsx-uses-vars": [
       "error"
+    ],
+    "react/prop-types": [
+      2,
+      {"ignore": ["initialValues", "handleSubmit", "pristine", "reset", "submitting"]}
     ]
   }
 }

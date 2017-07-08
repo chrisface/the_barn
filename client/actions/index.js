@@ -1,5 +1,6 @@
 export const ADD_HORSE = 'ADD_HORSE';
 export const SELECT_HORSE = 'SELECT_HORSE';
+export const UPDATE_HORSE = 'UPDATE_HORSE';
 
 const horseDefaults = {
   tier: 1,
@@ -18,6 +19,13 @@ export const addHorse = (horse) => {
     name: horse.name,
     gender: horse.gender
   }, horseDefaults);
+};
+
+export const updateHorse = (horse) => {
+  return {
+    type: UPDATE_HORSE,
+    horse: horse
+  };
 };
 
 export const selectHorse = (horseId) => {
