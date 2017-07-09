@@ -3,8 +3,11 @@ export const SELECT_HORSE = 'SELECT_HORSE';
 export const UPDATE_HORSE = 'UPDATE_HORSE';
 
 const horseDefaults = {
+  name: '',
   tier: 1,
-  level: 1
+  level: 1,
+  breeds: 0,
+  deaths: 0
 };
 
 let lastHorseId = 0;

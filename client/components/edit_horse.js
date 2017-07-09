@@ -20,7 +20,7 @@ class EditHorse extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <Row className="display">
-          <Column large ={8}>
+          <Column large ={12}>
             <h1>Edit Horse</h1>
           </Column>
         </Row>
@@ -34,16 +34,16 @@ class EditHorse extends React.Component {
           <Column large={2}>
             <label>
               Tier
-              <Field name="tier" component="input" type="text" />
+              <Field name="tier" component="input" type="number" min="1" max="8" />
             </label>
           </Column>
           <Column large={2}>
             <label>
               Level
-              <Field name="level" component="input" type="text" />
+              <Field name="level" component="input" type="number" min="1" max="30" />
             </label>
           </Column>
-          <Column large={6}>
+          <Column large={2}>
             <label>
               Gender
               <Field name="gender" component="select">
