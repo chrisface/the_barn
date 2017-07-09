@@ -23,6 +23,6 @@ store.subscribe(() =>{
 
 render();
 
-store.dispatch(addHorse({name: 'Kevin', gender: GENDER_MALE}));
+store.dispatch(addHorse({name: 'Kevin', gender: GENDER_MALE, tier: 3, level: 29}));
 store.dispatch(addHorse({name: 'Darren', gender: GENDER_MALE}));
 store.dispatch(addHorse({name: 'Cat', gender: GENDER_FEMALE}));

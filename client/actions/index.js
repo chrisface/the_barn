@@ -15,10 +15,8 @@ const nextHorseId = () => {
 export const addHorse = (horse) => {
   return Object.assign({
     type: ADD_HORSE,
-    id: nextHorseId(),
-    name: horse.name,
-    gender: horse.gender
-  }, horseDefaults);
+    id: nextHorseId()
+  }, horseDefaults, horse);
 };
 
 export const updateHorse = (horse) => {
