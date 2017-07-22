@@ -24,16 +24,34 @@ class EditHorse extends React.Component {
               <Field name="name" component="input" type="text" />
             </label>
           </Column>
-          <Column large={2}>
+          <Column large={1}>
             <label>
               Tier
               <Field name="tier" component="input" type="number" min="1" max="8" />
             </label>
           </Column>
-          <Column large={2}>
+          <Column large={1}>
             <label>
               Level
               <Field name="level" component="input" type="number" min="1" max="30" />
+            </label>
+          </Column>
+          <Column large={2}>
+            <label>
+              Available Breeds
+              <Field name="availableBreeds" component="input" type="number" min="0" max="2" />
+            </label>
+          </Column>
+          <Column large={2}>
+            <label>
+              Available Resets
+              <Field name="availableResets" component="input" type="number" min="0" max="2" />
+            </label>
+          </Column>
+          <Column large={1}>
+            <label>
+              Deaths
+              <Field name="deaths" component="input" type="number" min="0" />
             </label>
           </Column>
           <Column large={2}>
