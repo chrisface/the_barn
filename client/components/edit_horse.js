@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { selectedHorse } from '../selectors';
 import { updateHorse } from '../actions';
 import { GENDER_MALE, GENDER_FEMALE} from '../constants/horse';
 import { Field, reduxForm } from 'redux-form';
@@ -10,12 +8,7 @@ import { Button, Row, Column, Colors } from 'react-foundation';
 
 class EditHorse extends React.Component {
   render() {
-    const { initialValues } = this.props;
     const { handleSubmit, pristine, reset, submitting } = this.props;
-
-    if (!initialValues){
-      return null;
-    }
 
     return (
       <form onSubmit={handleSubmit}>
@@ -56,7 +49,9 @@ class EditHorse extends React.Component {
         </Row>
         <Row>
           <Column large={2}>
-            <Button type="submit" color={Colors.PRIMARY} disabled={pristine || submitting}>Submit</Button>
+            <Button type="submit" color={Colors.PRIMARY} disabled={pristine || submitting}>
+              Submit
+            </Button>
             <Button type="button" color={Colors.ALERT} disabled={pristine || submitting} onClick={reset}>
               Reset
             </Button>
@@ -67,19 +62,13 @@ class EditHorse extends React.Component {
   }
 }
 
-EditHorse.propTypes = {
-  horse: PropTypes.object
-};
-
-const mapStateToProps = (state) => {
-  return {
-    initialValues: selectedHorse(state)
-  };
+const mapStateToProps = (_state) => {
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: horse => dispatch(updateHorse(horse))
+    onSubmit: horse => dispatch(updateHorse(horse)),
   };
 };
 

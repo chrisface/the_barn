@@ -1,4 +1,4 @@
-import { ADD_HORSE, UPDATE_HORSE, SELECT_HORSE } from '../actions';
+import { ADD_HORSE, UPDATE_HORSE, SELECT_HORSE, DELETE_HORSE } from '../actions';
 
 const defaultState = {
   selectedHorse: null,
@@ -31,6 +31,13 @@ export default (state = defaultState, action) => {
     return Object.assign({}, state, {
       selectedHorse: horse.id
     });
+  }
+  case DELETE_HORSE: {
+    return Object.assign({}, state, {
+      horsesList: state.horsesList.filter((horse) => horse.id !== action.horseId),
+      selectedHorse: null
+    });
+
   }
   default: {
     return state;

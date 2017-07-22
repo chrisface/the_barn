@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { HorseRow, HorseRowHeader } from './horse_row';
-import { selectHorse } from '../actions';
+import { selectHorse, deleteHorse } from '../actions';
 import { getHorses } from '../selectors';
 
 class HorseTable extends React.Component {
   render() {
-    const { horses, onHorseSelected } = this.props;
+    const { horses, onHorseSelected, onHorseDeleted } = this.props;
     const horseRows = horses.map((horse) => {
-      return <HorseRow horse={horse} key={horse.id} onSelection={onHorseSelected}/>;
+      return <HorseRow horse={horse} key={horse.id} onHorseSelected={onHorseSelected} onHorseDeleted={onHorseDeleted}/>;
     });
 
     return (
@@ -27,7 +27,8 @@ class HorseTable extends React.Component {
 
 HorseTable.propTypes = {
   horses: PropTypes.array.isRequired,
-  onHorseSelected: PropTypes.func.isRequired
+  onHorseSelected: PropTypes.func.isRequired,
+  onHorseDeleted: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -38,7 +39,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onHorseSelected: horseId => dispatch(selectHorse(horseId))
+    onHorseSelected: horseId => dispatch(selectHorse(horseId)),
+    onHorseDeleted: horse => dispatch(deleteHorse(horse))
   };
 };
 

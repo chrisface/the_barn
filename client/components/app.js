@@ -4,28 +4,31 @@ import PropTypes from 'prop-types';
 import HorseTable from './horse_table';
 import EditHorse from './edit_horse';
 import { addHorse } from '../actions';
+import { selectedHorse } from '../selectors';
 import { Button, Colors } from 'react-foundation';
 
 class App extends React.Component {
   render() {
-    const { addHorse } = this.props;
+    const { addHorse, selectedHorse } = this.props;
 
     return (
       <div>
         <Button color={Colors.PRIMARY} onClick={addHorse}>New Horse</Button>
         <HorseTable/>
-        <EditHorse/>
+        { selectedHorse && <EditHorse initialValues={selectedHorse}/> }
       </div>
     );
   }
 }
 
 App.propTypes = {
-  addHorse: PropTypes.func.isRequired
+  addHorse: PropTypes.func.isRequired,
+  selectedHorse: PropTypes.object
 };
 
-const mapStateToProps = (_state) => {
+const mapStateToProps = (state) => {
   return {
+    selectedHorse: selectedHorse(state)
   };
 };
 

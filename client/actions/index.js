@@ -1,6 +1,9 @@
+import uuid from 'uuid/v4';
+
 export const ADD_HORSE = 'ADD_HORSE';
-export const SELECT_HORSE = 'SELECT_HORSE';
 export const UPDATE_HORSE = 'UPDATE_HORSE';
+export const SELECT_HORSE = 'SELECT_HORSE';
+export const DELETE_HORSE = 'DELETE_HORSE';
 
 const horseDefaults = {
   name: '',
@@ -10,15 +13,10 @@ const horseDefaults = {
   deaths: 0
 };
 
-let lastHorseId = 0;
-const nextHorseId = () => {
-  return ++lastHorseId;
-};
-
 export const addHorse = (horse) => {
   return Object.assign({
     type: ADD_HORSE,
-    id: nextHorseId()
+    id: uuid()
   }, horseDefaults, horse);
 };
 
@@ -26,6 +24,13 @@ export const updateHorse = (horse) => {
   return {
     type: UPDATE_HORSE,
     horse: horse
+  };
+};
+
+export const deleteHorse = (horseId) => {
+  return {
+    type: DELETE_HORSE,
+    horseId: horseId
   };
 };
 
