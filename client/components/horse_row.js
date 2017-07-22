@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Colors } from 'react-foundation';
+import classNames from 'classnames';
 
 class HorseRowComponent extends React.Component {
   constructor(props) {
     super(props);
     this.handleHorseDelete = this.handleHorseDelete.bind(this);
+    this.rowStyles = this.rowStyles.bind(this);
   }
-  handleHorseDelete(event){
+
+  rowStyles() {
+    const { selected } = this.props;
+    return classNames(
+      'horse-row',
+      {
+        'row-selected': selected
+      }
+    );
+  }
+
+  handleHorseDelete(event) {
     const { horse, onHorseDeleted} = this.props;
     event.stopPropagation();
     onHorseDeleted(horse.id);
@@ -15,8 +28,9 @@ class HorseRowComponent extends React.Component {
 
   render() {
     const { horse, onHorseSelected } = this.props;
+
     return (
-      <tr onClick={()=>{ onHorseSelected(horse.id); }} >
+      <tr onClick={ () => onHorseSelected(horse.id) } className={ this.rowStyles() } >
         <td>{ horse.name }</td>
         <td>{ horse.tier }</td>
         <td>{ horse.level }</td>
@@ -34,7 +48,8 @@ class HorseRowComponent extends React.Component {
 HorseRowComponent.propTypes = {
   onHorseSelected: PropTypes.func.isRequired,
   onHorseDeleted: PropTypes.func.isRequired,
-  horse: PropTypes.object.isRequired
+  horse: PropTypes.object.isRequired,
+  selected: PropTypes.bool.isRequired
 };
 
 class HorseHeaderRowComponent extends React.Component {

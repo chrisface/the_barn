@@ -10,6 +10,7 @@
     "lint": "eslint ./client"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.4",
     "eslint": "^4.1.1",
     "foundation-sites": "^6.4.1",

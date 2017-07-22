@@ -5,3 +5,7 @@
 @include foundation-forms;
 @include foundation-button;
 @include foundation-everything;
+
+.horse-row.row-selected {
+  background-color: darkseagreen;
+}
