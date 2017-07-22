@@ -27,10 +27,10 @@ class HorseRowComponent extends React.Component {
   }
 
   render() {
-    const { horse, onHorseSelected } = this.props;
+    const { horse, onHorseClicked } = this.props;
 
     return (
-      <tr onClick={ () => onHorseSelected(horse.id) } className={ this.rowStyles() } >
+      <tr onClick={ () => onHorseClicked(horse.id) } className={ this.rowStyles() } >
         <td>{ horse.name }</td>
         <td>{ horse.tier }</td>
         <td>{ horse.level }</td>
@@ -46,7 +46,7 @@ class HorseRowComponent extends React.Component {
 }
 
 HorseRowComponent.propTypes = {
-  onHorseSelected: PropTypes.func.isRequired,
+  onHorseClicked: PropTypes.func.isRequired,
   onHorseDeleted: PropTypes.func.isRequired,
   horse: PropTypes.object.isRequired,
   selected: PropTypes.bool.isRequired

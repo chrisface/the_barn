@@ -3,6 +3,7 @@ import uuid from 'uuid/v4';
 export const ADD_HORSE = 'ADD_HORSE';
 export const UPDATE_HORSE = 'UPDATE_HORSE';
 export const SELECT_HORSE = 'SELECT_HORSE';
+export const DESELECT_HORSE = 'DESELECT_HORSE';
 export const DELETE_HORSE = 'DELETE_HORSE';
 
 const horseDefaults = {
@@ -37,6 +38,13 @@ export const deleteHorse = (horseId) => {
 export const selectHorse = (horseId) => {
   return {
     type: SELECT_HORSE,
+    horseId: horseId
+  };
+};
+
+export const deselectHorse = (horseId) => {
+  return {
+    type: DESELECT_HORSE,
     horseId: horseId
   };
 };

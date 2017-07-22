@@ -2,20 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { HorseRow, HorseRowHeader } from './horse_row';
-import { selectHorse, deleteHorse } from '../actions';
+import { selectHorse, deselectHorse, deleteHorse } from '../actions';
 import { getHorses, selectedHorseId } from '../selectors';
 
 class HorseTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onHorseClicked = this.onHorseClicked.bind(this);
+  }
+
+  onHorseClicked(horseId) {
+    const { onHorseSelected, onHorseDeselected, selectedHorseId } = this.props;
+
+    if (horseId === selectedHorseId){
+      onHorseDeselected(horseId);
+    }
+    else {
+      onHorseSelected(horseId);
+    }
+  }
+
   render() {
-    const { horses, onHorseSelected, onHorseDeleted, selectedHorseId } = this.props;
+    const { horses, selectedHorseId, onHorseDeleted } = this.props;
     const horseRows = horses.map((horse) => {
       return (
         <HorseRow
-          horse={horse}
-          key={horse.id}
-          onHorseSelected={onHorseSelected}
-          onHorseDeleted={onHorseDeleted}
-          selected={horse.id === selectedHorseId}
+          horse={ horse }
+          key={ horse.id }
+          onHorseClicked={ this.onHorseClicked }
+          onHorseDeleted={ onHorseDeleted }
+          selected={ horse.id === selectedHorseId }
         />
       );
     });
@@ -36,8 +52,9 @@ class HorseTable extends React.Component {
 HorseTable.propTypes = {
   horses: PropTypes.array.isRequired,
   onHorseSelected: PropTypes.func.isRequired,
+  onHorseDeselected: PropTypes.func.isRequired,
   onHorseDeleted: PropTypes.func.isRequired,
-  selectedHorseId: PropTypes.number
+  selectedHorseId: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
@@ -50,6 +67,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onHorseSelected: horseId => dispatch(selectHorse(horseId)),
+    onHorseDeselected: horseId => dispatch(deselectHorse(horseId)),
     onHorseDeleted: horse => dispatch(deleteHorse(horse))
   };
 };
