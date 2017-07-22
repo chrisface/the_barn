@@ -1,8 +1,20 @@
+import uuid from 'uuid/v4';
 import { ADD_HORSE, UPDATE_HORSE, SELECT_HORSE, DESELECT_HORSE, DELETE_HORSE } from '../actions';
+import { GENDER_MALE } from '../constants/horse';
 
 const defaultState = {
   selectedHorse: null,
   horsesList: []
+};
+
+const defaultHorse = {
+  name: 'Larry',
+  tier: 1,
+  level: 1,
+  gender: GENDER_MALE,
+  availableBreeds: 2,
+  availableResets: 2,
+  deaths: 0
 };
 
 export default (state = defaultState, action) => {
@@ -11,13 +23,7 @@ export default (state = defaultState, action) => {
     return Object.assign({}, state, {
       horsesList: [
         ...state.horsesList,
-        {
-          id: action.id,
-          name: action.name,
-          tier: action.tier,
-          gender: action.gender,
-          level: action.level
-        }
+        Object.assign({id: uuid()}, defaultHorse)
       ]
     });
   }

@@ -35,6 +35,9 @@ class HorseRowComponent extends React.Component {
         <td>{ horse.tier }</td>
         <td>{ horse.level }</td>
         <td>{ horse.gender }</td>
+        <td>{ horse.availableBreeds }</td>
+        <td>{ horse.availableResets }</td>
+        <td>{ horse.deaths }</td>
         <td>
           <Button type="button" color={Colors.ALERT} onClick={ this.handleHorseDelete }>
             Delete
@@ -60,6 +63,9 @@ class HorseHeaderRowComponent extends React.Component {
         <td>Tier</td>
         <td>Level</td>
         <td>Gender</td>
+        <td>Available Breeds</td>
+        <td>Available Resets</td>
+        <td>Deaths</td>
         <td>Actions</td>
       </tr>
     );

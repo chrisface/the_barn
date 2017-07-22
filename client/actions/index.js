@@ -1,24 +1,13 @@
-import uuid from 'uuid/v4';
-
 export const ADD_HORSE = 'ADD_HORSE';
 export const UPDATE_HORSE = 'UPDATE_HORSE';
 export const SELECT_HORSE = 'SELECT_HORSE';
 export const DESELECT_HORSE = 'DESELECT_HORSE';
 export const DELETE_HORSE = 'DELETE_HORSE';
 
-const horseDefaults = {
-  name: '',
-  tier: 1,
-  level: 1,
-  breeds: 0,
-  deaths: 0
-};
-
-export const addHorse = (horse) => {
-  return Object.assign({
-    type: ADD_HORSE,
-    id: uuid()
-  }, horseDefaults, horse);
+export const addHorse = () => {
+  return {
+    type: ADD_HORSE
+  };
 };
 
 export const updateHorse = (horse) => {
